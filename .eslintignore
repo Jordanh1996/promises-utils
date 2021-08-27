@@ -1,0 +1,18 @@
+# Don't check auto-generated stuff into git
+coverage
+build
+dist
+node_modules
+stats.json
+
+.DS_Store
+npm-debug.log
+yarn-error.log
+package-json.lock
+
+# IntelliJ-IDEA
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea
+.history

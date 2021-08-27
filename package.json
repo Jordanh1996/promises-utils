@@ -1,0 +1,53 @@
+{
+  "name": "promise",
+  "description": "Promise utils for Node.JS applications",
+  "author": "Jordan Hury",
+  "keywords": [
+    "promise",
+    "utils",
+    "@promsise",
+    "@promise-utils"
+  ],
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "install": "lerna bootstrap",
+    "test": "lerna run test --parallel",
+    "test:local": "lerna run test --parallel",
+    "clean": "rimraf lib/",
+    "commit": "git-cz",
+    "build": "lerna run build --parallel",
+    "release": "git reset --hard && lerna publish from-package --yes",
+    "version": "lerna version --conventional-commits",
+    "init": "lerna bootstrap && lerna run build"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:local"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@types/async": "^3.2.7",
+    "@types/node": "^16.4.13",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.8",
+    "jest": "^27.0.6",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.4",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "async": "^3.2.1"
+  }
+}

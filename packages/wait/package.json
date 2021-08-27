@@ -1,0 +1,18 @@
+{
+  "name": "@promise/wait",
+  "version": "0.0.1",
+  "description": "Fires a Promise that is resolved after a given time",
+  "main": "dist/index.js",
+  "author": "Jordan Hury",
+  "license": "ISC",
+  "scripts": {
+    "test": "jest test/**/*.test.js --passWithNoTests",
+    "build:watch": "tsc -p ../../tsconfig.json --watch",
+    "build": "rm -rf dist/ && tsc --project ./tsconfig.prod.json && npm run prettier:declaration",
+    "prettier:declaration": "prettier --write ./dist/*.d.ts --config ../../.prettierrc.js"
+  },
+  "repository": {
+    "type": "git",
+    "private": true
+  }
+}

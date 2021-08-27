@@ -1,0 +1,18 @@
+{
+  "name": "@promise/auto",
+  "version": "0.0.1",
+  "description": "Handles complicated flows of Promises where each Promise has it's own set of dependencies to start running",
+  "main": "dist/index.js",
+  "author": "Jordan Hury",
+  "license": "ISC",
+  "scripts": {
+    "test": "jest test/**/*.test.js --passWithNoTests",
+    "build:watch": "tsc -p ../../tsconfig.json --watch",
+    "build": "rm -rf dist/ && tsc --project ./tsconfig.prod.json && npm run prettier:declaration",
+    "prettier:declaration": "prettier --write ./dist/*.d.ts --config ../../.prettierrc.js"
+  },
+  "repository": {
+    "type": "git",
+    "private": true
+  }
+}
