@@ -16,14 +16,14 @@ type PromiseResult<T> = ReturnType<T extends Returnable ? T : Returnable> extend
 export interface ThrottlePromisesOptions {
   /**
    * The maximum number of running concurrent promises.
-   * Default: Infinity
+   * @default Infinity
    */
   limit?: number;
 
   /**
    * Whether a rejected Promise should throw an error and stop the execution of all the Promises.
    * NOTE: when allSettled is set to true the return values is at the format of @see {PromiseSettledResult}
-   * Default: false
+   * @default false
    */
   allSettled?: boolean;
 }
