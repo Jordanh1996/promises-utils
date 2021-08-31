@@ -6,7 +6,7 @@
   "author": "Jordan Hury",
   "license": "ISC",
   "scripts": {
-    "test": "jest test/**/*.test.js --passWithNoTests",
+    "test": "jest --passWithNoTests",
     "build:watch": "tsc -p ../../tsconfig.json --watch",
     "build": "rm -rf dist/ && tsc --project ./tsconfig.prod.json && npm run prettier:declaration",
     "prettier:declaration": "prettier --write ./dist/*.d.ts --config ../../.prettierrc.js"

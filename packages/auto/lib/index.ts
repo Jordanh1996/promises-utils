@@ -2,7 +2,7 @@ type ValueType<T> = T extends Promise<infer U> ? U : T;
 type Returnable = (...args: any) => any;
 type PromiseResult<T extends Returnable> = ValueType<ReturnType<T>>;
 
-type TaskFn = (results: any) => (Promise<unknown> | unknown);
+type TaskFn = (results: any, cancel: (value?: any) => void) => (Promise<unknown> | unknown);
 type TaskWithoutDependencies = TaskFn;
 type TaskWithDependencies<T> = { task: TaskFn, dependencies: Array<keyof T> };
 type Task<T> = TaskWithDependencies<T> | TaskWithoutDependencies;
@@ -17,12 +17,14 @@ export interface PromiseAutoOptions {
   concurrency?: number;
 }
 
-class ErrorWithTaskName extends Error {
+class TaskError extends Error {
   taskName: string;
+  results: any;
 
-  constructor(message: string, taskName: string) {
+  constructor(message: string, taskName: string, results: any) {
     super(message);
     this.taskName = taskName;
+    this.results = results;
   }
 }
 
@@ -35,21 +37,6 @@ class ErrorWithTaskName extends Error {
  * The value of each key can be either the task / function, or an object as specified in {TaskWithDependencies}
  * @param {PromiseAutoOptions} options
  * @returns An object that each key would be the task name, and the value will be the return value for the given key task
- * @example
- * const results = promiseAuto({
- *  a: () => 'a';
- *  b: {
- *    dependencies: ['a', 'c'],
- *    task: ({ a }) => {
- *      console.log(a); // 'a', runs after "a" and "c" is resolved
- *      return 100;
- *    }
- *  },
- *  c: async () => {
- *    await wait(1000);
- *  }
- * });
- * console.log(results) // { a: 'a', b: 100, c: undefined }
  */
 export function promiseAuto<T extends { [K in keyof T]: Task<T> }>(tasks: T, options?: PromiseAutoOptions): Promise<{ [K in keyof T]: TaskResult<T[K]> }>;
 
@@ -62,6 +49,12 @@ export function promiseAuto<T extends { [K in keyof T]: Task<T> }>(
     const results: Partial<{ [K in keyof T]: TaskResult<T[K]> }> = {};
     if (!unfinishedPromisesCount) {
       return resolve(results);
+    }
+
+    try {
+      checkForGraphCyclesOrUnreachableTasks(tasks);
+    } catch(err) {
+      return reject(err);
     }
   
     const tasksWithoutDependencies: Partial<Record<keyof T, TaskFn>> = {};
@@ -92,7 +85,8 @@ export function promiseAuto<T extends { [K in keyof T]: Task<T> }>(
     const runTask = async (taskName: keyof T, task: TaskFn) => {
       try {
         runningPromisesCount++;
-        results[taskName] = (await task(results)) as TaskResult<T[keyof T]>;
+        const result = (await task(results, (value?: any) => cancel(taskName, value))) as TaskResult<T[keyof T]>;
+        results[taskName] = result;
         runningPromisesCount--;
         unfinishedPromisesCount--;
 
@@ -110,7 +104,7 @@ export function promiseAuto<T extends { [K in keyof T]: Task<T> }>(
         spawnNewTasks(taskName);
       } catch (err) {
         canceled = true;
-        reject(new ErrorWithTaskName(err.message || 'Task has thrown an error', taskName as string));
+        reject(new TaskError(err instanceof Error ? err.message : 'Task has thrown an error', taskName as string, results));
       }
     };
 
@@ -125,17 +119,84 @@ export function promiseAuto<T extends { [K in keyof T]: Task<T> }>(
         if (!(tasksWithDependences[taskName]?.size)) {
           const task = (tasks[taskName] as TaskWithDependencies<T>).task;
 
-          if (concurrency && runningPromisesCount === concurrency) {
-            pendingTasks.push([taskName, task]);
-          } else {
-            runTask(taskName, task);
-          }
+          pushTask(taskName, task);
         }
       });
     };
 
+    const pushTask = (taskName: keyof T, task: TaskFn) => {
+      if (canceled) {
+        return;
+      }
+      if (concurrency && runningPromisesCount === concurrency) {
+        pendingTasks.push([taskName, task]);
+      } else {
+        runTask(taskName, task);
+      }
+    };
+
+    const cancel = (taskName: keyof T, value?: any) => {
+      if (value !== undefined) {
+        results[taskName] = value;
+      }
+      canceled = true;
+      resolve(results);
+      throw new Error();
+    };
+
     for (const [taskName, task] of Object.entries(tasksWithoutDependencies)) {
-      runTask(taskName as keyof T, task as TaskFn);
+      pushTask(taskName as keyof T, task as TaskFn);
     }
   });
+}
+
+class DependencyGraphError extends Error {}
+
+// Khan Algorithm - http://connalle.blogspot.com/2013/10/topological-sortingkahn-algorithm.html
+function checkForGraphCyclesOrUnreachableTasks<T extends { [K in keyof T]: Task<T> }>(
+  tasks: T,
+) {
+  const queue: (keyof T)[] = [];
+  const nodes = {} as Record<keyof T, Set<keyof T>>;
+  const pointingTo = {} as Record<keyof T, Set<keyof T>>;
+  let counter = 0;
+
+  for (const [taskName, task] of Object.entries<Task<T>>(tasks)) {
+    if (typeof task === 'function') {
+      nodes[taskName as keyof T] = new Set();
+      queue.push(taskName as keyof T);
+    } else {
+      nodes[taskName as keyof T] = new Set(task.dependencies);
+      if (!task.dependencies.length) {
+        queue.push(taskName as keyof T);
+      }
+      for (const dependency of task.dependencies) {
+        if (pointingTo[dependency]) {
+          pointingTo[dependency].add(taskName as keyof T);
+        } else {
+          pointingTo[dependency] = new Set([taskName as keyof T]);
+        }
+      }
+    }
+  }
+
+  if (!queue.length) {
+    throw new DependencyGraphError('Tasks without dependencies not found');
+  }
+
+  while (queue.length) {
+    const father = queue.shift() as keyof T;
+    const children = (pointingTo[father] || new Set());
+    counter++;
+    children.forEach(child => {
+      nodes[child].delete(father);
+      if (!nodes[child].size) {
+        queue.push(child);
+      }
+    });
+  }
+
+  if (counter !== Object.keys(tasks).length) {
+    throw new DependencyGraphError('Invalid dependency graph');
+  }
 }
