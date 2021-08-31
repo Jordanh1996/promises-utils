@@ -17,9 +17,9 @@ export interface PromiseAutoOptions {
   concurrency?: number;
 }
 
-class TaskError extends Error {
-  taskName: string;
-  results: any;
+export class TaskError extends Error {
+  taskName: string; /** The name of the task that rejected */
+  results: any; /** The results of the Promises that has resolved before the error was thrown */
 
   constructor(message: string, taskName: string, results: any) {
     super(message);
