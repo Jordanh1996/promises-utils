@@ -1,4 +1,4 @@
-name: Start Release
+name: Release (if tag is present)
 
 on: push
 
