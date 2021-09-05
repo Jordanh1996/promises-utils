@@ -7,9 +7,12 @@
   "license": "ISC",
   "scripts": {
     "test": "jest --passWithNoTests",
-    "build:watch": "tsc -p ../../tsconfig.json --watch",
-    "build": "rm -rf dist/ && tsc --project ./tsconfig.prod.json && npm run prettier:declaration",
-    "prettier:declaration": "prettier --write ./dist/*.d.ts --config ../../.prettierrc.js"
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && npm run build:ts -- --emitDeclarationOnly && npm run prettier:declaration && npm run build:babel",
+    "build:ts": "tsc -p ./tsconfig.prod.json",
+    "build:babel": "babel --extensions '.ts' --out-dir ./dist ./lib",
+    "build:watch": "npm run build:ts -- -w -p ../../tsconfig.json",
+    "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
   },
   "repository": {
     "type": "git",
