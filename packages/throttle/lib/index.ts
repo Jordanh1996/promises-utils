@@ -34,7 +34,7 @@ export interface ThrottlePromisesOptions {
  * @param {ThrottlePromisesOptions} options
  * @returns {Array<PromiseSettledResult>} - Returns an array with the same order of the input, each value includes the Promise resolved / rejected value
  */
-export function throttlePromises<
+export function promiseThrottle<
   T extends readonly (() => Promise<unknown>)[] | readonly [() => Promise<unknown>],
   K extends ThrottlePromisesOptions
 >(promiseFunctions: T, options?: K):
@@ -50,7 +50,7 @@ export function throttlePromises<
  * @param {Iterable} iterable {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols}
  * @returns {Array<PromiseSettledResult>} - Returns an array with the same order of the input iterable, each value includes the Promise resolved / rejected value
  */
-export function throttlePromises<
+export function promiseThrottle<
   T extends () => Promise<unknown>,
   K extends ThrottlePromisesOptions
 >(
@@ -63,7 +63,7 @@ export function throttlePromises<
       : PromiseResult<T>[]
   >;
 
-export function throttlePromises(
+export function promiseThrottle(
   promiseFunctions: Iterable<() => Promise<unknown>>,
   { limit = Infinity, allSettled = false }: ThrottlePromisesOptions = {}
 ) {
@@ -73,6 +73,10 @@ export function throttlePromises(
     let IterableIndex = 0;
     let unSettledPromisesCount = promises.length;
     let breakRejected = false; // used if allSettled is false and a Promise rejected
+
+    if (!promises.length) {
+      return resolve(results);
+    }
 
     const iteration = async () => {
       if (promises.length) {
@@ -109,7 +113,7 @@ export function throttlePromises(
       }
     };
 
-    for (let i = 0; i < limit; i++) {
+    for (let i = 0; i < limit && promises.length; i++) {
       iteration();
     }
   });
@@ -122,7 +126,7 @@ export function throttlePromises(
  * @returns {Record<string, PromiseSettledResult>} - An object with keys that originates from the promiseFunctionsObject parameter.
  * The values include the resolved / rejected value from the promise
  */
-export function throttlePromisesObject<
+export function promiseThrottleObject<
   T extends Record<string, () => Promise<unknown>>,
   K extends ThrottlePromisesOptions
 >(
@@ -136,7 +140,7 @@ export function throttlePromisesObject<
         : PromiseResult<T[P]>
   }>;
 
-export async function throttlePromisesObject(
+export async function promiseThrottleObject(
   promiseFunctionsObject: Record<string, () => Promise<unknown>>,
   options: ThrottlePromisesOptions = {}
 ) {
@@ -145,7 +149,7 @@ export async function throttlePromisesObject(
   const promiseFunctions = Object.values(promiseFunctionsObjectDuplicate);
   const result: any = {};
 
-  const resultArr = await throttlePromises(promiseFunctions, options);
+  const resultArr = await promiseThrottle(promiseFunctions, options);
 
   for (let i = 0; i < keys.length; i++) {
     result[keys[i]] = resultArr[i];
@@ -155,14 +159,14 @@ export async function throttlePromisesObject(
 }
 
 const a = async () => {
-  const b = await throttlePromises(
+  const b = await promiseThrottle(
     [
       async () => 1,
       async () => true,
     ],
   );
 
-  const c = await throttlePromisesObject({
+  const c = await promiseThrottleObject({
     a: async () => 1,
     b: async () => true,
   })

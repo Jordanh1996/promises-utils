@@ -1,4 +1,4 @@
-import { promiseAuto } from '../lib';
+import { promiseAuto, TaskError } from '../lib';
 
 describe('promiseAuto', () => {
   it('should call the tasks in the right order', async () => {
@@ -120,8 +120,8 @@ describe('promiseAuto', () => {
       });
       
       await testTask3Ran();
-      expect((<any>err).taskName).toBe('task2');
-      expect((<any>err).results).toEqual({ task1: 'task1' });
+      expect((<TaskError>err).taskName).toBe('task2');
+      expect((<TaskError>err).results).toEqual({ task1: 'task1' });
     }
   });
 

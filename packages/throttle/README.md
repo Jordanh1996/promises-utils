@@ -11,14 +11,14 @@ A utility module to run a set of Promises with a limit on the number of concurre
 
 ### Array version:
 ```typescript
-import { throttlePromises } from '@promise/throttle';
+import { promiseThrottle } from '@promise/throttle';
 
 async function example() {
   const [
     first,  // { status: 'fulfilled', value: 1 }
     second,// { status: 'rejected', reason: (The error object) }
     third, // { status: 'fulfilled', value: 2 }
-  ] = await throttlePromises(
+  ] = await promiseThrottle(
     [
       async () => {
         await sleep(100);
@@ -35,12 +35,12 @@ async function example() {
 }
 
 // When allSettled option is off.
-// Note: If one of the Promise rejects then the throttlePromises call will throw, and the rest of the Promises that hasn't started will be canceled.
+// Note: If one of the Promise rejects then the promiseThrottle call will throw, and the rest of the Promises that hasn't started will be canceled.
 async function example() {
   const [
     first,  // 1
     second,// 2
-  ] = await throttlePromises(
+  ] = await promiseThrottle(
     [
       async () => {
         await sleep(100);
@@ -59,7 +59,7 @@ async function example() {
 
 ### Object version:
 ```typescript
-import { throttlePromisesObject } from '@promise/throttle';
+import { promiseThrottleObject } from '@promise/throttle';
 
 async function example() {
   const input = {
@@ -76,7 +76,7 @@ async function example() {
     first,  // { status: 'fulfilled', value: 1 }
     second,// { status: 'rejected', reason: (The error object) }
     third, // { status: 'fulfilled', value: 2 }
-  } = await throttlePromises(
+  } = await promiseThrottleObject(
     input, {
       limit: 2 // Will run at most 2 Promises at a time
       allSettled: true  // A rejected Promise does not cancels execution and throws an error
@@ -88,7 +88,7 @@ async function example() {
 
 ### Iterable version:
 ```typescript
-import { throttlePromises } from '@promise/throttle';
+import { promiseThrottle } from '@promise/throttle';
 
 async function example() {
   const input = new Set([
@@ -105,7 +105,7 @@ async function example() {
     first,  // { status: 'fulfilled', value: 1 }
     second,// { status: 'rejected', reason: (The error object) }
     third, // { status: 'fulfilled', value: 2 }
-  ] = await throttlePromises(
+  ] = await promiseThrottle(
     input, 
     {
       limit: 2 // Will run at most 2 Promises at a time
