@@ -24,4 +24,14 @@ async function example2() {
   await wait(10, { timeUnit: 's' });
   console.log('after 10 seconds');
 }
+
+async function exampleRejects() {
+  try {
+    await wait(10, { reject: true });
+
+    console.log('never reaches here');
+  } catch (err) {
+    console.log('logs this after 10 ms');
+  }
+}
 ```
