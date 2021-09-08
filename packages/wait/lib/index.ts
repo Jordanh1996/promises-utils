@@ -20,7 +20,7 @@ export interface WaitOptions {
 /**
  * Instead of passing a String literal to the timeUnit of the wait function options you can use this constant
  */
-export const UNITS = {
+export const UNITS: Record<string, TimeUnit> = {
   MS: 'ms',
   S: 's',
   M: 'm',
