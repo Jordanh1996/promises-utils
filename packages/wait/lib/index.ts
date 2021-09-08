@@ -5,10 +5,22 @@ export type TimeUnit = 'ms' /** milliseconds */
   | 'd' /** days */
 
 export interface WaitOptions {
-  timeUnit?: TimeUnit; /** Default: Milliseconds */
+  /**
+   * e.g seconds minutes etc
+   * @default 'ms' (milliseconds)
+   */
+  timeUnit?: TimeUnit;
+  /**
+   * Whether to reject after the given time instead of resolving
+   * @default false
+   */
+  reject?: boolean;
 }
 
-const UNITS = {
+/**
+ * Instead of passing a String literal to the timeUnit of the wait function options you can use this constant
+ */
+export const UNITS = {
   MS: 'ms',
   S: 's',
   M: 'm',
@@ -16,9 +28,15 @@ const UNITS = {
   D: 'd',
 }
 
+/**
+ * Accepts a given time from the point of being called and resolves after that time
+ * @param {number} time The amount of time to wait before finishing
+ * @param {WaitOptions} waitOptions
+ * @returns A Promise that resolves after the given time
+ */
 export function wait(
   time: number,
-  { timeUnit = UNITS.MS as TimeUnit }: WaitOptions = {}
+  { timeUnit = UNITS.MS as TimeUnit, reject = false }: WaitOptions = {}
 ): Promise<void> {
   switch(timeUnit) {
     case UNITS.D:
@@ -33,7 +51,7 @@ export function wait(
       // pass
   }
 
-  return new Promise(resolve => {
-    setTimeout(resolve, time);
+  return new Promise((res, rej) => {
+    setTimeout(reject ? rej : res, time);
   });
 }
