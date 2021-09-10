@@ -1,5 +1,5 @@
 {
-  "name": "promise",
+  "name": "promise-utils",
   "description": "Promise utils for Node.JS applications",
   "author": "Jordan Hury",
   "keywords": [

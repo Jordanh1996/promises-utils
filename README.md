@@ -1,4 +1,4 @@
-# @promise
+# promise-utils
 
 This repo uses:
 
