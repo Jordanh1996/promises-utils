@@ -1,6 +1,9 @@
 name: Node.js CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -17,14 +20,18 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
+      working-directory: ./docs
 
     - name: Run Tests
       run: npm test
-
-    - name: Install Dependencies (Github Pages)
-      run: npm install
       working-directory: ./docs
 
-    - name: Run Tests (Github Pages)
-      run: npm test
+    - name: Build
+      run: npm run build
       working-directory: ./docs
+
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/build
