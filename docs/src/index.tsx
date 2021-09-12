@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    font-family: 'Roboto';
+  }
+
   html, body, #root {
     height: 100%;
     width: 100%;
