@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CodeBlock, atomOneDark, nord } from 'react-code-blocks';
+import { CodeBlock, nord } from 'react-code-blocks';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import CodeIcon from '@material-ui/icons/Code';
 import Button from '@material-ui/core/Button';

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { PageContainer } from '../page-container';
 import { InstallationUsage } from './installation-usage';
 import { IntroHeader } from './intro-header';

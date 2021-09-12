@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavigationItems } from './navigation-items';
-import { SearchInput } from './search-input';
 
 const Container = styled.div`
   height: 100%;
@@ -15,7 +14,6 @@ const Container = styled.div`
 export function SideBar() {
   return (
     <Container>
-      {/* <SearchInput /> */}
       <NavigationItems />
     </Container>
   );
