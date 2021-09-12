@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useMemo } from 'react';
+import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
+import { ThemeProvider as MaterialUIThemeProvider, createTheme } from '@material-ui/core/styles';
+import { ColorSchemeProvider, useColorScheme } from './context/color-scheme';
+import { Router } from './router/router';
+
+function ThemeProviders({ children }: { children: React.ReactNode}) {
+  const { isDarkMode } = useColorScheme();
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          type: isDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [isDarkMode],
+  );console.log(theme);
+
+  return (
+    <MaterialUIThemeProvider theme={theme}>
+      <StyledComponentsThemeProvider theme={theme}>
+        {children}
+      </StyledComponentsThemeProvider>
+    </MaterialUIThemeProvider>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorSchemeProvider>
+      <ThemeProviders>
+        <Router />
+      </ThemeProviders>
+    </ColorSchemeProvider>
   );
 }
 
