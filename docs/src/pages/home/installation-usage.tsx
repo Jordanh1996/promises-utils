@@ -4,6 +4,7 @@ import { CodeBlock, nord } from 'react-code-blocks';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import CodeIcon from '@material-ui/icons/Code';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router';
 
 const Card = styled.div`
   padding: 24px 24px 0px 24px;
@@ -61,18 +62,20 @@ const CardFooterButtonContainer = styled.div`
   margin: 8px 0;
 `;
 
-function CardFooter({ text }: { text: string }) {
+function CardFooter({ text, onClick }: { text: string; onClick: any }) {
   return (
     <CardFooterContainer>
       <HorizontalLine />
       <CardFooterButtonContainer>
-        <Button color="primary">{text}</Button>
+        <Button color="primary" onClick={onClick}>{text}</Button>
       </CardFooterButtonContainer>
     </CardFooterContainer>
   );
 }
 
 function Installation() {
+  const history = useHistory();
+
   return (
     <Card>
       <div>
@@ -101,12 +104,14 @@ function Installation() {
           />
         </CodeBlockContainer>
       </div>
-      <CardFooter text={'read installation documentation'} />
+      <CardFooter text={'read installation documentation'} onClick={() => history.push('/installation')} />
     </Card>
   );
 }
 
 function Usage() {
+  const history = useHistory();
+
   return (
     <Card>
       <div>
@@ -133,7 +138,7 @@ async function main() {
           />
         </CodeBlockContainer>
       </div>
-      <CardFooter text={"go to function documentation"} />
+      <CardFooter text={"go to function documentation"} onClick={() => history.push('/')} />
     </Card>
   );
 }

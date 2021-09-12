@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const items = [
@@ -22,43 +22,57 @@ const items = [
 ];
 
 const ItemsContainer = styled.div`
-  padding: 20px 28px;
+  padding: 20px 0px;
   display: flex;
   flex-direction: column;
 `;
 
-const ItemsTitle = styled(Link)`
-  font-size: 18px;
+const ItemsTitle = styled(Link)<{ isActive?: boolean }>`
+  font-size: ${props => props.isActive ? '20px' : '18px'};;
   font-weight: 600;
-  margin: 16px 0;
+  margin: 8px 0;
+  padding: 8px 0;
   user-select: none;
   cursor: pointer;
   text-decoration: none;
+  border-left: ${props => props.isActive ? `3px solid ${props.theme.palette.primary.main}` : 'none'};
+  margin-left: 24px;
+  padding-left: 16px;
   &:active, &:focus, &:hover, &:visited {
     color: black;
   }
 `;
 
-const Item = styled(Link)`
+const Item = styled(Link)<{ isActive?: boolean }>`
   font-size: 16px;
   margin: 8px 0;
   padding: 4px 16px;
   color: black;
   text-decoration: none;
+  border-left: ${props => props.isActive ? `3px solid ${props.theme.palette.primary.main}` : 'none'};
+  margin-left: 24px;
+  padding-left: 28px;
   &:active, &:focus, &:hover, &:visited {
     color: black;
   }
 `;
 
-export function NavigationItems() {
+function isActive(path: string, to: string) {
+  return path === to;
+}
 
+export function NavigationItems() {
+  const history = useHistory();
   
   return (
     <ItemsContainer>
-      <ItemsTitle to="/">
-        Getting Started
+      <ItemsTitle to="/" isActive={isActive(history.location.pathname, '/')}>
+        Introduction
       </ItemsTitle>
-      <ItemsTitle to="/">
+      <ItemsTitle to="/installation" isActive={isActive(history.location.pathname, '/installation')}>
+        Installation
+      </ItemsTitle>
+      <ItemsTitle to="/" isActive={false}>
         Utils
       </ItemsTitle>
       {

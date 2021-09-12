@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import JS from './js.png';
+import { useHistory } from 'react-router';
 
 const IntroHeaderContainerSkewed = styled.div`
   min-height: 440px;
@@ -75,6 +76,8 @@ const GetStartedButton = withStyles((theme) => ({
 }))(Button);
 
 export function IntroHeader() {
+  const history = useHistory();
+
   return (
     <IntroHeaderContainer>
       <div style={{ position: 'relative' }}>
@@ -83,7 +86,7 @@ export function IntroHeader() {
       <TitleContainer>
         <Title>Promise Utils</Title>
         <SubTitle>We're trying to help you, I Promise</SubTitle>
-        <GetStartedButton variant="contained" color="default">
+        <GetStartedButton variant="contained" color="default" onClick={() => history.push('/installation')}>
           Get started
         </GetStartedButton>
       </TitleContainer>
