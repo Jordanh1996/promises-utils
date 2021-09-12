@@ -62,8 +62,8 @@ export function NavigationItems() {
         Utils
       </ItemsTitle>
       {
-        items.map(({ url, label }) => (
-          <Item to={url}>
+        items.map(({ url, label }, i) => (
+          <Item to={url} key={i}>
             {label}
           </Item>
         ))

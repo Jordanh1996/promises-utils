@@ -4,11 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BrightModeIcon from '@material-ui/icons/Brightness7';
 import DarkModeIcon from '@material-ui/icons/Brightness4';
 import { useColorScheme } from '../../context/color-scheme';
+import { JSLogo } from './js-logo';
 
 const ToolbarLayout = styled.div`
   height: 100%;
@@ -18,6 +18,18 @@ const ToolbarLayout = styled.div`
   align-items: center;
 `;
 
+const ToolbarLeftSideContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const ToolbarRightSideTitle = styled.div`
+  margin-left: 14px;
+  font-size: 20px;
+  font-weight: 600;
+`;
+
 export function Navbar() {
   const { isDarkMode, toggleColorScheme } = useColorScheme();
 
@@ -25,7 +37,10 @@ export function Navbar() {
     <AppBar position="static">
       <Toolbar>
         <ToolbarLayout>
-          <Typography variant="h6">Promise Utils</Typography>
+          <ToolbarLeftSideContainer>
+            <JSLogo size={28} fill="#fff" />
+            <ToolbarRightSideTitle>Promise Utils</ToolbarRightSideTitle>
+          </ToolbarLeftSideContainer>
 
           <div>
             <Tooltip title={isDarkMode ? 'Switch to bright mode' : 'Switch to dark mode'}>

@@ -15,7 +15,7 @@ function ThemeProviders({ children }: { children: React.ReactNode}) {
         },
       }),
     [isDarkMode],
-  );
+  );console.log(theme);
 
   return (
     <MaterialUIThemeProvider theme={theme}>
