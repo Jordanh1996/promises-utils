@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CodeBlock, CopyBlock, nord } from 'react-code-blocks';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import CodeIcon from '@material-ui/icons/Code';
 import Button from '@material-ui/core/Button';

@@ -104,6 +104,7 @@ const [
         <CodeBlockExample
           text={
 `import { promiseThrottleObject } from '@promise/throttle';
+// import { promiseThrottleObject } from '@promise/utils/throttle';
 
 const input = {
   first: async () => {
