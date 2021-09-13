@@ -72,7 +72,7 @@ export function NavigationItems() {
       <ItemsTitle to="/installation" isActive={isActive(history.location.pathname, '/installation')}>
         Installation
       </ItemsTitle>
-      <ItemsTitle to="/" isActive={false}>
+      <ItemsTitle to={"/" + history.location.pathname} isActive={false}>
         Utils
       </ItemsTitle>
       {

@@ -19,7 +19,7 @@ const Text = styled.div`
   margin: 8px 0;
 `;
 
-const CDN_LINK = 'https://unpkg.com';
+// const CDN_LINK = 'https://unpkg.com';
 
 export function Installation() {
   return (
