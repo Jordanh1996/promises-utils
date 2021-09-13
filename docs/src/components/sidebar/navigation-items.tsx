@@ -49,6 +49,7 @@ const Item = styled(Link)<{ isActive?: boolean }>`
   padding: 4px 16px;
   color: black;
   text-decoration: none;
+  font-weight: ${props => props.isActive ? 600 : 400};
   border-left: ${props => props.isActive ? `3px solid ${props.theme.palette.primary.main}` : 'none'};
   margin-left: 24px;
   padding-left: 28px;
@@ -77,7 +78,7 @@ export function NavigationItems() {
       </ItemsTitle>
       {
         items.map(({ url, label }, i) => (
-          <Item to={url} key={i}>
+          <Item to={url} key={i} isActive={isActive(history.location.pathname, url)}>
             {label}
           </Item>
         ))
