@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CodeBlock, nord } from 'react-code-blocks';
+import { CodeBlock, CopyBlock, nord } from 'react-code-blocks';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import CodeIcon from '@material-ui/icons/Code';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router';
+import { CodeBlockExample, ShellCodeExample } from '../../components/code';
 
 const Card = styled.div`
   padding: 24px 24px 0px 24px;
@@ -85,22 +86,16 @@ function Installation() {
         </TitleContainer>
         <Text>Install @promise/utils via npm</Text>
         <CodeBlockContainer>
-          <CodeBlock
+          <ShellCodeExample
             text="npm install @promise/utils"
-            language="shell"
-            showLineNumbers={false}
-            theme={nord}
           />
         </CodeBlockContainer>
         <br />
         <Text>or install any of the compounding packages.</Text>
         <Text>for example:</Text>
         <CodeBlockContainer>
-          <CodeBlock
+          <ShellCodeExample
             text="npm install @promise/wait"
-            language="shell"
-            showLineNumbers={false}
-            theme={nord}
           />
         </CodeBlockContainer>
       </div>
@@ -121,7 +116,8 @@ function Usage() {
         </TitleContainer>
         <Text>First install @promise/utils or @promise/wait</Text>
         <CodeBlockContainer>
-          <CodeBlock
+          <CodeBlockExample
+            fontSize="16px"
             text={
 `import { wait } from '@promise/utils';
 // import { wait } from '@promise/wait';
@@ -132,13 +128,10 @@ async function main() {
   console.log('after 1 second');
 }`
             }
-            language="js"
-            showLineNumbers={false}
-            theme={nord}
           />
         </CodeBlockContainer>
       </div>
-      <CardFooter text={"go to function documentation"} onClick={() => history.push('/')} />
+      <CardFooter text={"go to function documentation"} onClick={() => history.push('/docs/wait')} />
     </Card>
   );
 }

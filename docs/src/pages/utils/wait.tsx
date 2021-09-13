@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeBlockExample } from '../../components/code-example';
+import { CodeBlockExample } from '../../components/code';
 import { KeyValue } from '../../components/key-value';
 import { MiddleContainer } from '../../components/middle-container';
 import { Signature } from '../../components/signature';
