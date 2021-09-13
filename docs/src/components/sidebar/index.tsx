@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavigationItems } from './navigation-items';
 
 const Container = styled.div`
-  height: 100%;
+  height: calc(100% - 64px);
   width: 240px;
   display: flex;
   flex-direction: column;
