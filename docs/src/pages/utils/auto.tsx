@@ -21,15 +21,16 @@ export function Auto() {
     <PageContainer>
       <MiddleContainer>
         <Title>@promise/auto</Title>
-        <Text>Determines the best order for running the async functions, based on their dependencies</Text>
-        <Text>Each function can optionally depend on other functions being completed first, and each function is run as soon as its requirements are satisfied</Text>
-        <Text>Every task call will get the results of the completed tasks in an object as it's first argument</Text>
-        <Text>If an error is thrown in any of the tasks then the execution stops and the error object should hold the successfull results</Text>
+        <Text>Each of these functions are available either from @promise/utils or @promise/throttle</Text>
 
         <SubTitle>promiseAuto</SubTitle>
         <Signature>
           {"promiseAuto(tasks: TasksObject, options?): Promise<ResultsObject>"}
         </Signature>
+        <Text>Determines the best order for running the async functions, based on their dependencies</Text>
+        <Text>Each function can optionally depend on other functions being completed first, and each function is run as soon as its requirements are satisfied</Text>
+        <Text>Every task call will get the results of the completed tasks in an object as it's first argument</Text>
+        <Text>If an error is thrown in any of the tasks then the execution stops and the error object should hold the successfull results</Text>
         <Text>Returns a Promise that resolves with the tasks results</Text>
         <br />
         <Text><b>Arguments</b></Text>
