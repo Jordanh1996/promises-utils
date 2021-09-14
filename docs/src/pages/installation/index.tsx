@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CodeBlock, nord } from 'react-code-blocks';
 import { PageContainer } from '../page-container';
 import { MiddleContainer } from '../../components/middle-container';
+import { ShellCodeExample } from '../../components/code';
 
 const Title = styled.div`
   font-size: 36px;
@@ -28,32 +29,23 @@ export function Installation() {
         <Title>Installation</Title>
         <SubTitle>Install @promise/utils and stop copy-pasting your utility functions</SubTitle>
         <Text>@promise/utils is available as an npm package:</Text>
-        <CodeBlock
+        <ShellCodeExample
           text="npm install @promise/utils"
-          language="shell"
-          showLineNumbers={false}
-          theme={nord}
         />
         <br />
         <Text>You can also install it via yarn:</Text>
-        <CodeBlock
+        <ShellCodeExample
           text="yarn add @promise/utils"
-          language="shell"
-          showLineNumbers={false}
-          theme={nord}
         />
         <br />
         <SubTitle>Saving installation time</SubTitle>
         <Text>Instead of installing all of the utils, you can install any of the compounding small pacakges instead. e.g:</Text>
-        <CodeBlock
+        <ShellCodeExample
           text={
 `npm install @promise/wait
 npm install @promise/throttle
 npm install @promise/auto`
           }
-          language="shell"
-          showLineNumbers={false}
-          theme={nord}
         />
         <br />
         {/* <SubTitle>CDN</SubTitle>
