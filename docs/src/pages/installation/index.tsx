@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CodeBlock, nord } from 'react-code-blocks';
 import { PageContainer } from '../page-container';
 import { MiddleContainer } from '../../components/middle-container';
 import { ShellCodeExample } from '../../components/code';
