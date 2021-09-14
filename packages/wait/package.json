@@ -14,6 +14,19 @@
     "build:watch": "npm run build:ts -- -w -p ../../tsconfig.json",
     "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
   },
+  "keywords": [
+    "@promise/wait",
+    "wait",
+    "promise-wait",
+    "sleep",
+    "@promise/sleep",
+    "@promise",
+    "@promise-utils",
+    "@promise/utils",
+    "promise",
+    "utils",
+    "async"
+  ],
   "repository": {
     "type": "git",
     "private": true
