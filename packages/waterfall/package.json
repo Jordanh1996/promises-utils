@@ -27,6 +27,9 @@
     "utils",
     "async"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "private": true
