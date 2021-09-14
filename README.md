@@ -1,5 +1,5 @@
-# promise-utils
+# Promise Utils
 
-This repo uses:
+The missing Promise utils that we're never shipped with Node.JS
 
-* [lerna](https://github.com/lerna/lerna) - for running scripts in our packages (version, publish, test, etc...)
+You can learn all about it in our [website](https://jordanh1996.github.io/promise-utils/)
