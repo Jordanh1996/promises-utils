@@ -1,14 +1,11 @@
+# Promise Utils
+
+The missing Promise utils that we're never shipped with Node.JS
+
+You can learn all about it in our [website](https://jordanh1996.github.io/promises-utils/)
+
 ## installation
 
 ```cmd
 npm install promises-utils
-```
-
-# promises-utils
-A utility module to fire a Promise that will be resolved after the time given in the parameter.
-
-## usage
-
-```typescript
-
 ```

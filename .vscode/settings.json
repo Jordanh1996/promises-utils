@@ -1,0 +1,9 @@
+{
+  "eslint.workingDirectories": [
+    "packages/auto",
+    "packages/utils",
+    "packages/throttle",
+    "packages/wait",
+    "packages/waterfall"
+  ]
+}

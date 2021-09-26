@@ -1,6 +1,6 @@
 {
   "name": "promises-utils.throttle",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fire a batch of promises while controlling the concurrent running promises",
   "main": "dist/index.js",
   "author": "Jordan Hury",
@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest --passWithNoTests",
     "clean": "rm -rf dist/",
-    "build": "npm run clean && npm run build:ts -- --emitDeclarationOnly && npm run prettier:declaration && npm run build:babel",
+    "build": "npm run clean && npm run build:ts && npm run prettier:declaration",
     "build:ts": "tsc -p ./tsconfig.prod.json",
     "build:babel": "babel --extensions '.ts' --out-dir ./dist ./lib",
     "build:watch": "npm run build:ts -- -w -p ../../tsconfig.json",
