@@ -1,6 +1,6 @@
 {
   "name": "promises-utils.throttle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fire a batch of promises while controlling the concurrent running promises",
   "main": "dist/index.js",
   "author": "Jordan Hury",
