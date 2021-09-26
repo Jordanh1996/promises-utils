@@ -1,13 +1,4 @@
-// export * from '../../auto/lib';
-// export * from '../../throttle/lib';
-// export * from '../../wait/lib';
-// // export * from '../../waterfall/lib';
-
-// import { wait } from 'promises-utils.wait';
-
-// export async function a() { 
-//   await wait(1000);
-//   console.log('a');
-// }
-
-// a();
+export * as promiseAuto from 'promises-utils.auto';
+export * as promiseThrottle from 'promises-utils.throttle';
+export * as promiseWait from 'promises-utils.wait';
+export * as promiseWaterfall from 'promises-utils.waterfall';

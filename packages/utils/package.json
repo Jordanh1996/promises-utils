@@ -1,8 +1,8 @@
 {
   "name": "promises-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "All of the promises-utils, in one place",
-  "main": "dist/index.js",
+  "main": "index.js",
   "author": "Jordan Hury",
   "license": "ISC",
   "scripts": {
@@ -10,10 +10,10 @@
     "clean": "rm -rf dist/",
     "build": "npm run clean && npm run build:ts -- --emitDeclarationOnly && npm run prettier:declaration && npm run build:babel",
     "build:ts": "tsc -p ./tsconfig.prod.json",
-    "build:babel": "babel --extensions '.ts' --out-dir ./dist ./lib",
+    "build:babel": "babel --extensions '.ts' --out-dir ./ ./lib",
     "build:watch": "npm run build:ts -- -w -p ../../tsconfig.json",
     "build:umd": "webpack",
-    "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
+    "prettier:declaration": "prettier --write ./**/*.d.ts --config ../../.prettierrc.js"
   },
   "keywords": [
     "promises-utils",
@@ -36,9 +36,9 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "promises-utils.auto": "^0.0.1",
-    "promises-utils.throttle": "^0.0.1",
-    "promises-utils.wait": "^0.0.1",
-    "promises-utils.waterfall": "^0.0.1"
+    "promises-utils.auto": "^0.0.2",
+    "promises-utils.throttle": "^0.0.2",
+    "promises-utils.wait": "^0.0.2",
+    "promises-utils.waterfall": "^0.0.2"
   }
 }
