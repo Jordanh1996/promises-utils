@@ -2,7 +2,7 @@
   "name": "docs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Jordanh1996.github.io/promise-utils",
+  "homepage": "https://Jordanh1996.github.io/promises-utils",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",

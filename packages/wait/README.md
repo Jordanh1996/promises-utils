@@ -1,16 +1,16 @@
 ## installation
 
 ```cmd
-npm install @promise/wait
+npm install promises-utils.wait
 ```
 
-# @promise/wait
+# promises-utils.wait
 A utility module to fire a Promise that will be resolved after the time given in the parameter.
 
 ## usage
 
 ```typescript
-import { wait } from '@promise/wait';
+import { wait } from 'promises-utils.wait';
 
 async function example() {
   await wait(1000);

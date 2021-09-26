@@ -20,8 +20,8 @@ export function Auto() {
   return (
     <PageContainer>
       <MiddleContainer>
-        <Title>@promise/auto</Title>
-        <Text>Each of these functions are available either from @promise/utils or @promise/throttle</Text>
+        <Title>promises-utils.auto</Title>
+        <Text>Each of these functions are available either from promises-utils or promises-utils.throttle</Text>
 
         <SubTitle>promiseAuto</SubTitle>
         <Signature>
@@ -41,8 +41,8 @@ export function Auto() {
         <br />
         <CodeBlockExample
           text={
-`import { promiseAuto } from '@promise/auto';
-// import { promiseAuto } from '@promise/utils/auto';
+`import { promiseAuto } from 'promises-utils.auto';
+// import { promiseAuto } from 'promises-utils/auto';
 
 const results = await promiseAuto({
   getData: async () => {

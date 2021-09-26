@@ -1,5 +1,5 @@
 {
-  "name": "@promise/auto",
+  "name": "promises-utils.auto",
   "version": "0.0.1",
   "description": "Handles complicated flows of Promises where each Promise has it's own set of dependencies to start running",
   "main": "dist/index.js",
@@ -15,13 +15,12 @@
     "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
   },
   "keywords": [
-    "@promise/auto",
+    "promises-utils.auto",
     "async.auto",
     "auto",
     "promise-auto",
     "@promise",
-    "@promise-utils",
-    "@promise/utils",
+    "promises-utils",
     "promise",
     "utils",
     "async"

@@ -83,10 +83,10 @@ function Installation() {
           <GetAppIcon color="primary" fontSize="large" />
           <Title>Installation</Title>
         </TitleContainer>
-        <Text>Install @promise/utils via npm</Text>
+        <Text>Install promises-utils via npm</Text>
         <CodeBlockContainer>
           <ShellCodeExample
-            text="npm install @promise/utils"
+            text="npm install promises-utils"
           />
         </CodeBlockContainer>
         <br />
@@ -94,7 +94,7 @@ function Installation() {
         <Text>for example:</Text>
         <CodeBlockContainer>
           <ShellCodeExample
-            text="npm install @promise/wait"
+            text="npm install promises-utils.wait"
           />
         </CodeBlockContainer>
       </div>
@@ -113,13 +113,13 @@ function Usage() {
           <CodeIcon color="primary" fontSize="large" />
           <Title>Usage</Title>
         </TitleContainer>
-        <Text>First install @promise/utils or @promise/wait</Text>
+        <Text>First install promises-utils or promises-utils.wait</Text>
         <CodeBlockContainer>
           <CodeBlockExample
             fontSize="16px"
             text={
-`import { wait } from '@promise/utils';
-// import { wait } from '@promise/wait';
+`import { wait } from 'promises-utils';
+// import { wait } from 'promises-utils.wait';
 
 async function main() {
   await wait(1000);

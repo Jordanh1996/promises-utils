@@ -1,10 +1,10 @@
 ## installation
 
 ```bash
-npm install @promise/auto
+npm install promises-utils.auto
 ```
 
-# @promise/auto
+# promises-utils.auto
 Determines the best order for running the AsyncFunctions in tasks, based on their requirements. Each function can optionally depend on other functions being completed first, and each function is run as soon as its requirements are satisfied.
 
 AsyncFunctions also receive an object containing the results of functions which have completed so far as an argument.
@@ -15,7 +15,7 @@ Insprired from [async.auto](https://caolan.github.io/async/v3/docs.html#auto)
 
 ### Array version:
 ```typescript
-import { promiseAuto } from '@promise/throttle';
+import { promiseAuto } from 'promises-utils.throttle';
 
 async function example() {
   const results = promiseAuto({

@@ -1,10 +1,10 @@
 ## installation
 
 ```bash
-npm install @promise/waterfall
+npm install promises-utils.waterfall
 ```
 
-# @promise/waterfall
+# promises-utils.waterfall
 A utility module to run a set of Promises with a limit on the number of concurrent promises.
 
 Follows the response structure of [Promise.allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled).
@@ -13,7 +13,7 @@ Follows the response structure of [Promise.allSettled](https://developer.mozilla
 
 ### Array version:
 ```typescript
-import { throttlePromises } from '@promise/throttle';
+import { throttlePromises } from 'promises-utils.throttle';
 
 async function example() {
   const [
@@ -61,7 +61,7 @@ async function example() {
 
 ### Object version:
 ```typescript
-import { throttlePromisesObject } from '@promise/throttle';
+import { throttlePromisesObject } from 'promises-utils.throttle';
 
 async function example() {
   const input = {
@@ -89,7 +89,7 @@ async function example() {
 
 ### Iterable version:
 ```typescript
-import { throttlePromises } from '@promise/throttle';
+import { throttlePromises } from 'promises-utils.throttle';
 
 async function example() {
   const input = new Set([

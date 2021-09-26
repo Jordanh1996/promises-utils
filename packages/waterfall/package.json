@@ -1,5 +1,5 @@
 {
-  "name": "@promise/waterfall",
+  "name": "promises-utils.waterfall",
   "version": "0.0.1",
   "description": "Fire a batch of promises while controlling the concurrent running promises",
   "main": "dist/index.js",
@@ -15,14 +15,14 @@
     "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
   },
   "keywords": [
-    "@promise/waterfall",
+    "promises-utils.waterfall",
     "waterfall",
     "promise-waterfall",
     "series",
     "promise-series",
     "@promise",
-    "@promise-utils",
-    "@promise/utils",
+    "promises-utils",
+    "promises-utils",
     "promise",
     "utils",
     "async"

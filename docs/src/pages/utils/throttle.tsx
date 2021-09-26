@@ -30,8 +30,8 @@ export function Throttle() {
   return (
     <PageContainer>
       <MiddleContainer>
-        <Title>@promise/throttle</Title>
-        <Text>Each of these functions are available either from @promise/utils or @promise/throttle</Text>
+        <Title>promises-utils.throttle</Title>
+        <Text>Each of these functions are available either from promises-utils or promises-utils.throttle</Text>
 
         <SubTitle>promiseThrottle</SubTitle>
         <Signature>
@@ -48,7 +48,7 @@ export function Throttle() {
         <br />
         <CodeBlockExample
           text={
-`import { promiseThrottle } from '@promise/throttle';
+`import { promiseThrottle } from 'promises-utils.throttle';
 
 const [
   first,  // 1
@@ -103,8 +103,8 @@ const [
         <br />
         <CodeBlockExample
           text={
-`import { promiseThrottleObject } from '@promise/throttle';
-// import { promiseThrottleObject } from '@promise/utils/throttle';
+`import { promiseThrottleObject } from 'promises-utils.throttle';
+// import { promiseThrottleObject } from 'promises-utils/throttle';
 
 const input = {
   first: async () => {

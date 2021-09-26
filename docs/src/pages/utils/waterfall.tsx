@@ -19,8 +19,8 @@ export function Waterfall() {
   return (
     <PageContainer>
       <MiddleContainer>
-        <Title>@promise/waterfall</Title>
-        <Text>Each of these functions are available either from @promise/utils or @promise/waterfall</Text>
+        <Title>promises-utils.waterfall</Title>
+        <Text>Each of these functions are available either from promises-utils or promises-utils.waterfall</Text>
 
         <SubTitle>promiseWaterfall</SubTitle>
         <Signature>
@@ -36,8 +36,8 @@ export function Waterfall() {
         <br />
         <CodeBlockExample
           text={
-`import { promiseWaterfall } from '@promise/waterfall';
-// import { promiseWaterfall } from '@promise/utils/waterfall';
+`import { promiseWaterfall } from 'promises-utils.waterfall';
+// import { promiseWaterfall } from 'promises-utils/waterfall';
 
 const lastResult /** 3 */ = await promiseWaterfall([
   async () => 1,

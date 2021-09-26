@@ -1,5 +1,5 @@
 {
-  "name": "@promise/throttle",
+  "name": "promises-utils.throttle",
   "version": "0.0.1",
   "description": "Fire a batch of promises while controlling the concurrent running promises",
   "main": "dist/index.js",
@@ -15,12 +15,12 @@
     "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
   },
   "keywords": [
-    "@promise/throttle",
+    "promises-utils.throttle",
     "throttle",
     "promise-throttle",
     "@promise",
-    "@promise-utils",
-    "@promise/utils",
+    "promises-utils",
+    "promises-utils",
     "promise",
     "utils",
     "async"

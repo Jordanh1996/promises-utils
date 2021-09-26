@@ -54,7 +54,7 @@ export function Navbar() {
                 aria-label="github"
                 color="inherit"
                 onClick={() =>
-                  window.open('https://github.com/Jordanh1996/promise-utils', '_blank')?.focus()
+                  window.open('https://github.com/Jordanh1996/promises-utils', '_blank')?.focus()
                 }
               >
                 <GitHubIcon />

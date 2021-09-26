@@ -1,17 +1,17 @@
 ## installation
 
 ```bash
-npm install @promise/throttle
+npm install promises-utils.throttle
 ```
 
-# @promise/throttle
+# promises-utils.throttle
 A utility module to run a set of Promises with a limit on the number of concurrent promises.
 
 ## usage
 
 ### Array version:
 ```typescript
-import { promiseThrottle } from '@promise/throttle';
+import { promiseThrottle } from 'promises-utils.throttle';
 
 async function example() {
   const [
@@ -59,7 +59,7 @@ async function example() {
 
 ### Object version:
 ```typescript
-import { promiseThrottleObject } from '@promise/throttle';
+import { promiseThrottleObject } from 'promises-utils.throttle';
 
 async function example() {
   const input = {
@@ -88,7 +88,7 @@ async function example() {
 
 ### Iterable version:
 ```typescript
-import { promiseThrottle } from '@promise/throttle';
+import { promiseThrottle } from 'promises-utils.throttle';
 
 async function example() {
   const input = new Set([

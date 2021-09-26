@@ -1,12 +1,12 @@
 {
-  "name": "promise-utils",
+  "name": "promises-utils",
   "description": "Promise utils for Node.JS applications",
   "author": "Jordan Hury",
   "keywords": [
     "promise",
     "utils",
     "@promsise",
-    "@promise-utils"
+    "promises-utils"
   ],
   "license": "ISC",
   "private": true,

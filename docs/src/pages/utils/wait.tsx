@@ -28,8 +28,8 @@ export function Wait() {
   return (
     <PageContainer>
       <MiddleContainer>
-        <Title>@promise/wait</Title>
-        <Text>Each of these functions are available either from @promise/utils or @promise/wait</Text>
+        <Title>promises-utils.wait</Title>
+        <Text>Each of these functions are available either from promises-utils or promises-utils.wait</Text>
 
         <SubTitle>wait</SubTitle>
         <Signature>
@@ -45,8 +45,8 @@ export function Wait() {
         <br />
         <CodeBlockExample
           text={
-`import { wait, UNITS } from '@promise/wait';
-// import { wait, UNITS } from '@promise/utils/wait';
+`import { wait, UNITS } from 'promises-utils.wait';
+// import { wait, UNITS } from 'promises-utils/wait';
 
 await wait(1000);
 console.log('after 1 second');

@@ -1,5 +1,5 @@
 {
-  "name": "@promise/wait",
+  "name": "promises-utils.wait",
   "version": "0.0.1",
   "description": "Fires a Promise that is resolved after a given time",
   "main": "dist/index.js",
@@ -15,14 +15,14 @@
     "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
   },
   "keywords": [
-    "@promise/wait",
+    "promises-utils.wait",
     "wait",
     "promise-wait",
     "sleep",
     "@promise/sleep",
     "@promise",
-    "@promise-utils",
-    "@promise/utils",
+    "promises-utils",
+    "promises-utils",
     "promise",
     "utils",
     "async"
