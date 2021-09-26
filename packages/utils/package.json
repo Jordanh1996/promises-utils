@@ -1,0 +1,44 @@
+{
+  "name": "promises-utils",
+  "version": "0.0.1",
+  "description": "All of the promises-utils, in one place",
+  "main": "dist/index.js",
+  "author": "Jordan Hury",
+  "license": "ISC",
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && npm run build:ts -- --emitDeclarationOnly && npm run prettier:declaration && npm run build:babel",
+    "build:ts": "tsc -p ./tsconfig.prod.json",
+    "build:babel": "babel --extensions '.ts' --out-dir ./dist ./lib",
+    "build:watch": "npm run build:ts -- -w -p ../../tsconfig.json",
+    "build:umd": "webpack",
+    "prettier:declaration": "prettier --write ./dist/**/*.d.ts --config ../../.prettierrc.js"
+  },
+  "keywords": [
+    "promises-utils",
+    "promise-utils",
+    "promise",
+    "utils",
+    "promise-utils.auto",
+    "promise-utils.throttle",
+    "promise-utils.wait",
+    "promise-utils.waterfall"
+  ],
+  "repository": {
+    "type": "git",
+    "private": true
+  },
+  "devDependencies": {
+    "babel-loader": "^8.2.2",
+    "ts-loader": "^9.2.5",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "promises-utils.auto": "^0.0.1",
+    "promises-utils.throttle": "^0.0.1",
+    "promises-utils.wait": "^0.0.1",
+    "promises-utils.waterfall": "^0.0.1"
+  }
+}
