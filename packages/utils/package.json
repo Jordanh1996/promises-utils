@@ -1,6 +1,6 @@
 {
   "name": "promises-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "All of the promises-utils, in one place",
   "main": "index.js",
   "author": "Jordan Hury",
@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest --passWithNoTests",
     "clean": "rm -rf dist/",
-    "build": "exit 0",
+    "build": "npm run clean && npm run build:ts && npm run prettier:declaration",
     "build:ts": "tsc -p ./tsconfig.prod.json",
     "build:babel": "babel --extensions '.ts' --out-dir ./ ./lib",
     "build:watch": "npm run build:ts -- -w -p ../../tsconfig.json",
@@ -36,9 +36,9 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "promises-utils.auto": "^0.0.2",
-    "promises-utils.throttle": "^0.0.2",
-    "promises-utils.wait": "^0.0.2",
-    "promises-utils.waterfall": "^0.0.2"
+    "promises-utils.auto": "^0.0.3",
+    "promises-utils.throttle": "^0.0.3",
+    "promises-utils.wait": "^0.0.3",
+    "promises-utils.waterfall": "^0.0.3"
   }
 }

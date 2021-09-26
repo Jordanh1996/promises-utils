@@ -1,6 +1,6 @@
 {
   "name": "promises-utils.wait",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fires a Promise that is resolved after a given time",
   "main": "dist/index.js",
   "author": "Jordan Hury",
