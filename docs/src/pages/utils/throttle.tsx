@@ -49,6 +49,7 @@ export function Throttle() {
         <CodeBlockExample
           text={
 `import { promiseThrottle } from 'promises-utils.throttle';
+// import { promiseThrottleObject } from 'promises-utils/throttle';
 
 const [
   first,  // 1

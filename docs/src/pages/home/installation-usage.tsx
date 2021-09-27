@@ -118,7 +118,7 @@ function Usage() {
           <CodeBlockExample
             fontSize="16px"
             text={
-`import { wait } from 'promises-utils';
+`import { wait } from 'promises-utils/wait';
 // import { wait } from 'promises-utils.wait';
 
 async function main() {
