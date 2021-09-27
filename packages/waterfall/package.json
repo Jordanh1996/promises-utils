@@ -32,6 +32,8 @@
   },
   "repository": {
     "type": "git",
-    "private": true
-  }
+    "url": "https://github.com/Jordanh1996/promises-utils",
+    "directory": "packages/waterfall"
+  },
+  "homepage": "https://jordanh1996.github.io/promises-utils/#/docs/waterfall"
 }

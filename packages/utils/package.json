@@ -25,10 +25,6 @@
     "promise-utils.wait",
     "promise-utils.waterfall"
   ],
-  "repository": {
-    "type": "git",
-    "private": true
-  },
   "devDependencies": {
     "babel-loader": "^8.2.2",
     "ts-loader": "^9.2.5",
@@ -40,5 +36,11 @@
     "promises-utils.throttle": "^0.0.3",
     "promises-utils.wait": "^0.0.3",
     "promises-utils.waterfall": "^0.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jordanh1996/promises-utils",
+    "directory": "packages/utils"
+  },
+  "homepage": "https://jordanh1996.github.io/promises-utils"
 }
