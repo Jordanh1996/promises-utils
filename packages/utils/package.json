@@ -4,7 +4,7 @@
   "description": "All of the promises-utils, in one place",
   "main": "index.js",
   "author": "Jordan Hury",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "test": "jest --passWithNoTests",
     "clean": "rm -rf dist/",

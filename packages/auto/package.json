@@ -4,7 +4,7 @@
   "description": "Handles complicated flows of Promises where each Promise has it's own set of dependencies to start running",
   "main": "dist/index.js",
   "author": "Jordan Hury",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "test": "jest --passWithNoTests",
     "clean": "rm -rf dist/",

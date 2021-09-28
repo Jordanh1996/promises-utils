@@ -8,7 +8,7 @@
     "@promsise",
     "promises-utils"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "install": "lerna bootstrap",
