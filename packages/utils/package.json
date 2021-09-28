@@ -1,6 +1,6 @@
 {
   "name": "promises-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "All of the promises-utils, in one place",
   "main": "index.js",
   "author": "Jordan Hury",
@@ -32,10 +32,10 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "promises-utils.auto": "^0.0.3",
-    "promises-utils.throttle": "^0.0.3",
-    "promises-utils.wait": "^0.0.3",
-    "promises-utils.waterfall": "^0.0.3"
+    "promises-utils.auto": "^0.0.5",
+    "promises-utils.throttle": "^0.0.5",
+    "promises-utils.wait": "^0.0.5",
+    "promises-utils.waterfall": "^0.0.5"
   },
   "repository": {
     "type": "git",
