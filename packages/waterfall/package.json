@@ -1,6 +1,6 @@
 {
   "name": "promises-utils.waterfall",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Fire a batch of promises while controlling the concurrent running promises",
   "main": "dist/index.js",
   "author": "Jordan Hury",
